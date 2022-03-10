@@ -4,6 +4,8 @@ module.exports = {
         "./resources/**/*.js",
         "./resources/**/*.vue",
     ],
+    darkMode: false,
+    separator: "_",
     theme: {
         extend: {},
     },

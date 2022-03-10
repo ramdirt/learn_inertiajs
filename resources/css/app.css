@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .btn {
+        @apply inline-flex items-center px-4 py-2 text-sm font-medium text-center bg-white text-gray-900 hover_bg-gray-300 focus_ring-4 focus_ring-blue-300;
+    }
+    .btn-badge {
+        @apply inline-flex justify-center items-center ml-2 w-5 h-5 text-xs font-semibold text-yellow-500 bg-yellow-200 rounded-full;
+    }
+
+    .btn-filter-start {
+        @apply btn border-l border-t border-b rounded-l py-1 px-2 !important;
+    }
+    .btn-filter-center {
+        @apply btn border-t border-b py-1 px-2 !important;
+    }
+    .btn-filter-end {
+        @apply btn border-r border-t border-b rounded-r py-1 px-2 !important;
+    }
+}

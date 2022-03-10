@@ -2,22 +2,25 @@
     <nav>
         <ul class="flex space-x-6">
             <li>
-                <NavLink href="/" :active="$page.component === 'Home'">
+                <the-nav-link href="/" :active="$page.component === 'Home'">
                     Home
-                </NavLink>
+                </the-nav-link>
             </li>
             <li>
-                <NavLink href="/users" :active="$page.component === 'Users'">
+                <the-nav-link
+                    href="/users"
+                    :active="$page.component === 'Users'"
+                >
                     Users
-                </NavLink>
+                </the-nav-link>
             </li>
             <li>
-                <NavLink
+                <the-nav-link
                     href="/settings"
                     :active="$page.component === 'Settings'"
                 >
                     Settings
-                </NavLink>
+                </the-nav-link>
             </li>
             <li>
                 <Link
@@ -34,7 +37,7 @@
 </template>
 
 <script setup>
-import NavLink from "./NavLink";
+import TheNavLink from "@/Components/Header/TheNavLink";
 </script>
 
 <style></style>
