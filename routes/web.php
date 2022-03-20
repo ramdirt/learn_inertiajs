@@ -4,10 +4,13 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\User;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\AdminUsersController;
 
-Route::get('/login', [LoginController::class, 'create'])->name('login');
-Route::post('/login', [LoginController::class, 'store']);
-Route::post('/logout', [LoginController::class, 'destroy'])->middleware('auth');
+Route::controller(LoginController::class)->group(function () {
+    Route::get('/login', 'create')->name('login');
+    Route::post('/login', 'store');
+    Route::post('/logout', 'destroy')->middleware('auth');
+});
 
 Route::get('/', function () {
     return Inertia::render('Home');
@@ -15,9 +18,9 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function() {
     
-    Route::get('/users', function () {
+    Route::get('/admin/users', function () {
         
-        return Inertia::render('Users/Index', [
+        return Inertia::render('Admin/Users/Index', [
             'time' => now()->toTimeString(),
             'users' => User::query()
                 ->when(Request::input('search'), function($query, $search) {
@@ -53,9 +56,13 @@ Route::middleware('auth')->group(function() {
     
         return redirect('/users');
     });
-    
-    
-    Route::get('/settings', function () {
-        return Inertia::render('Settings');
+
+    Route::get('/catalog', function () {
+        return Inertia::render('Catalog');
     });
+
+    Route::get('/basket', function () {
+        return Inertia::render('Basket');
+    });
+    
 });

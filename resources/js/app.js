@@ -1,16 +1,17 @@
 import { createApp, h } from "vue";
+import store from "./store/";
 import { createInertiaApp, Link, Head } from "@inertiajs/inertia-vue3";
 import { InertiaProgress } from "@inertiajs/progress";
-import Layout from "./Pages/Layout.vue";
+import Default from "@/layout/Default.vue";
 
 createInertiaApp({
     resolve: async (name) => {
-        let page = await import(`./Pages/${name}`);
+        let page = await import(`@/Pages/${name}`);
 
         page = page.default;
 
         if (page.layout === undefined) {
-            page.layout = Layout;
+            page.layout = Default;
         }
         // page.layout ??= Layout;
 
@@ -19,6 +20,7 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
+            .use(store)
             .component("Link", Link)
             .component("Head", Head)
             .mount(el);

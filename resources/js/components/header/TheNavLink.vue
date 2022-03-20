@@ -7,15 +7,8 @@
     </Link>
 </template>
 
-<script>
-import { Link } from "@inertiajs/inertia-vue3";
-
-export default {
-    props: {
-        active: Boolean,
-    },
-    components: { Link },
-};
+<script setup>
+let props = defineProps({
+    active: Boolean,
+});
 </script>
-
-<style></style>

@@ -3,7 +3,7 @@
 
     <div class="flex justify-between">
         <div class="flex item-center">
-            <h1 class="text-3xl">Users</h1>
+            <h1 class="text-3xl ml-3">Users</h1>
 
             <Link
                 v-if="can.createUser"
@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    <Pagination :links="users.links" class="mt-6" />
+    <app-pagination :links="users.links" class="mt-6" />
 </template>
 
 <script setup>
@@ -68,8 +68,8 @@ import { ref, watch, defineAsyncComponent } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import throttle from "lodash/throttle";
 
-let Pagination = defineAsyncComponent(() => {
-    return import("@/Shared/Pagination");
+let AppPagination = defineAsyncComponent(() => {
+    return import("@/components/AppPagination");
 });
 
 let props = defineProps({
